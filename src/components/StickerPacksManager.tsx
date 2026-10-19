@@ -149,7 +149,7 @@ export const StickerPacksManager: React.FC<StickerPacksManagerProps> = ({
               {isBn ? 'গতি ও টেক্সট কনফিগারেশন' : 'Delivery & Text Configuration'}
             </span>
             <span className="text-xs text-slate-400">
-              {isBn ? 'ডিফল্ট: ১ সেকেন্ডে ১ স্টিকার' : 'Default: 1 sticker/sec'}
+              {isBn ? 'ডিফল্ট: সর্বোচ্চ গতি (১ সেকেন্ডে যতগুলো সম্ভব)' : 'Default: Maximum Turbo Speed'}
             </span>
           </div>
 
@@ -158,35 +158,40 @@ export const StickerPacksManager: React.FC<StickerPacksManagerProps> = ({
             <div>
               <label className="block text-slate-300 font-medium mb-1.5 flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-sky-400" />
-                {isBn ? 'স্টিকার পাঠানোর ব্যবধান (Delay)' : 'Delay between stickers'}
+                {isBn ? 'স্টিকার পাঠানোর স্পিড / ব্যবধান' : 'Delivery Speed / Delay'}
               </label>
               <div className="flex items-center gap-2">
                 <input
                   type="range"
-                  min="500"
-                  max="3000"
-                  step="250"
+                  min="0"
+                  max="2000"
+                  step="50"
                   value={delay}
                   onChange={(e) => setDelay(Number(e.target.value))}
                   className="flex-1 accent-sky-500"
                 />
-                <span className="font-mono bg-slate-800 px-2 py-1 rounded text-slate-200 min-w-[70px] text-center">
-                  {(delay / 1000).toFixed(1)} sec
+                <span className="font-mono bg-slate-800 px-2 py-1 rounded text-slate-200 min-w-[85px] text-center font-bold">
+                  {delay === 0 ? '⚡ Turbo (0s)' : `${(delay / 1000).toFixed(2)}s`}
                 </span>
               </div>
-              <div className="flex gap-1.5 mt-2">
-                {[500, 1000, 1500, 2000].map((ms) => (
+              <div className="flex flex-wrap gap-1.5 mt-2">
+                {[
+                  { ms: 0, label: '⚡ সর্বোচ্চ গতি (ডিফল্ট)' },
+                  { ms: 100, label: '🚀 ১০০ms (দ্রুত)' },
+                  { ms: 500, label: '০.৫ সেকেন্ড' },
+                  { ms: 1000, label: '১.০ সেকেন্ড' },
+                ].map(({ ms, label }) => (
                   <button
                     key={ms}
                     type="button"
                     onClick={() => setDelay(ms)}
-                    className={`px-2 py-1 rounded text-[11px] font-mono border transition-all cursor-pointer ${
+                    className={`px-2.5 py-1 rounded text-[11px] font-medium border transition-all cursor-pointer ${
                       delay === ms
-                        ? 'bg-sky-500/20 text-sky-300 border-sky-500/50'
+                        ? 'bg-gradient-to-r from-amber-500/25 to-sky-500/25 text-amber-300 border-amber-500/50 shadow-sm'
                         : 'bg-slate-800/60 text-slate-400 border-slate-700/60 hover:text-slate-200'
                     }`}
                   >
-                    {ms === 1000 ? '1.0s (ডিফল্ট)' : `${ms / 1000}s`}
+                    {label}
                   </button>
                 ))}
               </div>

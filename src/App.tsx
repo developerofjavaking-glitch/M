@@ -13,9 +13,9 @@ import { CloudUpload } from 'lucide-react';
 
 const DEFAULT_CONFIG: BotConfig = {
   packs: ['Pro_Fish_Kingdom_by_fStikBot', 'Flame_HQ_5187_by_fStikBot'],
-  delayMs: 1000,
+  delayMs: 0,
   doneMessage: 'Done! ✅ সব স্টিকার পাঠানো সম্পন্ন হয়েছে।',
-  welcomeMessage: '🚀 স্টিকার পাঠানো শুরু হচ্ছে! মোট ২টি প্যাকের সব স্টিকার প্রতি সেকেন্ডে ১টি করে পাঠানো হচ্ছে...',
+  welcomeMessage: '⚡ স্টিকার পাঠানো শুরু হচ্ছে! (Maximum Turbo Speed এ সব স্টিকার পাঠানো হচ্ছে)...',
   triggerCommand: '/start',
   allowAnyMessage: false,
 };
@@ -251,8 +251,8 @@ export default function App() {
             </h2>
             <p className="text-xs text-slate-300 max-w-3xl leading-relaxed">
               {lang === 'bn'
-                ? 'আপনার বট টোকেন দিয়ে "বট চালু করুন" চাপুন। টেলিগ্রামে যে কেউ /start দিলে দুটি প্যাকের সব স্টিকার প্রতি সেকেন্ডে ১টি করে পাঠানো হবে ও শেষে Done বলবে।'
-                : 'Enter your bot token and click Start Bot. When anyone sends /start in Telegram, stickers stream 1 per sec from both packs, followed by Done!.'}
+                ? 'আপনার বট টোকেন দিয়ে "বট চালু করুন" চাপুন। টেলিগ্রামে যে কেউ /start দিলে দুটি প্যাকের সব স্টিকার সর্বোচ্চ গতিতে (১ সেকেন্ডে যতগুলো সম্ভব) পাঠানো হবে ও শেষে Done বলবে।'
+                : 'Enter your bot token and click Start Bot. When anyone sends /start in Telegram, stickers will stream at MAXIMUM TURBO SPEED (as fast as possible), followed by Done!.'}
             </p>
           </div>
 

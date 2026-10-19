@@ -402,7 +402,7 @@ export class DirectTelegramEngine {
 
     this.addLog(
       'info',
-      `${username}-কে ${allStickers.length}টি স্টিকার পাঠানো শুরু হয়েছে (প্রতি সেকেন্ডে ১টি)...`
+      `${username}-কে ${allStickers.length}টি স্টিকার পাঠানো শুরু হয়েছে (সর্বোচ্চ গতি / Maximum Speed)...`
     );
 
     for (let i = 0; i < allStickers.length; i++) {
@@ -443,8 +443,11 @@ export class DirectTelegramEngine {
         }
       }
 
-      const delay = Math.max(300, this.config.delayMs || 1000);
-      await new Promise((r) => setTimeout(r, delay));
+      // Maximum Speed: 0 delay by default, or configured delay
+      const delay = typeof this.config.delayMs === 'number' ? this.config.delayMs : 0;
+      if (delay > 0) {
+        await new Promise((r) => setTimeout(r, delay));
+      }
     }
 
     try {

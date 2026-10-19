@@ -54,8 +54,8 @@ export const BotHeader: React.FC<BotHeaderProps> = ({
             </div>
             <p className="text-xs text-slate-400 mt-0.5">
               {isBn
-                ? 'টেলিগ্রামে /start দিলে ২টি প্যাকের সব স্টিকার প্রতি সেকেন্ডে ১টি করে পাঠাবে'
-                : 'Streams sticker packs at 1 sticker/sec on /start, announces Done'}
+                ? 'টেলিগ্রামে /start দিলে ২টি প্যাকের সব স্টিকার সর্বোচ্চ গতিতে (১ সেকেন্ডে যতগুলো সম্ভব) পাঠাবে'
+                : 'Streams sticker packs at MAXIMUM SPEED on /start, announces Done'}
             </p>
           </div>
         </div>

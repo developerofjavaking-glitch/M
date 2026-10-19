@@ -455,9 +455,11 @@ class TelegramBotManager {
         }
       }
 
-      // Delay per second (or configured ms)
-      const delay = Math.max(300, this.config.delayMs || 1000);
-      await new Promise((r) => setTimeout(r, delay));
+      // Delay: 0ms for maximum speed, or configured ms
+      const delay = typeof this.config.delayMs === 'number' ? this.config.delayMs : 0;
+      if (delay > 0) {
+        await new Promise((r) => setTimeout(r, delay));
+      }
     }
 
     // Done! Send final message: "done" / "Done! ✅"

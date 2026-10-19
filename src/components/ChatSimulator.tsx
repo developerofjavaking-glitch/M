@@ -76,8 +76,8 @@ export const ChatSimulator: React.FC<ChatSimulatorProps> = ({
       sender: 'bot',
       type: 'text',
       text: isBn
-        ? '🚀 স্টিকার পাঠানো শুরু হচ্ছে! মোট ২টি প্যাকের সব স্টিকার প্রতি সেকেন্ডে ১টি করে পাঠানো হচ্ছে...'
-        : '🚀 Starting sticker stream! Streaming 2 sticker packs (1 sticker/sec)...',
+        ? '⚡ স্টিকার পাঠানো শুরু হচ্ছে! (সর্বোচ্চ গতিতে সব স্টিকার পাঠানো হচ্ছে)...'
+        : '⚡ Starting sticker stream! Streaming all stickers at MAXIMUM TURBO SPEED...',
       time: currentTime(),
     };
     setMessages((prev) => [...prev, welcomeMsg]);
@@ -115,9 +115,9 @@ export const ChatSimulator: React.FC<ChatSimulatorProps> = ({
       });
     }
 
-    // 3. Send 1 sticker per second (1000ms)
+    // 3. Send stickers at rapid fire maximum speed (burst animation)
     for (let i = 0; i < stickersToSimulate.length; i++) {
-      await new Promise((r) => setTimeout(r, 1000));
+      await new Promise((r) => setTimeout(r, 180));
       const s = stickersToSimulate[i];
       const stickerMsg: SimMessage = {
         id: Math.random().toString(),

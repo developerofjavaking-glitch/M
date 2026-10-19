@@ -206,9 +206,9 @@ export const StreamMonitor: React.FC<StreamMonitorProps> = ({
                       <div className="flex items-center gap-2 text-[11px] text-slate-400 mt-0.5">
                         <span>{s.currentPack}</span>
                         {isStreaming && (
-                          <span className="inline-flex items-center gap-1 text-sky-400 font-semibold">
-                            <Clock className="w-3 h-3" />
-                            1 sticker/sec
+                          <span className="inline-flex items-center gap-1 text-amber-400 font-semibold">
+                            <Zap className="w-3 h-3 fill-current" />
+                            {isBn ? 'সর্বোচ্চ গতি (Turbo)' : 'Maximum Speed'}
                           </span>
                         )}
                       </div>
