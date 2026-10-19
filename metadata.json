@@ -1,0 +1,6 @@
+{
+  "name": "Telegram Sticker Stream Bot",
+  "description": "Telegram bot manager that automatically sends sticker packs (Pro Fish Kingdom & Flame HQ) per second upon /start and announces done when completed.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
